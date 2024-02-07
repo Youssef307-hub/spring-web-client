@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: custom-client
+            client-secret: xOooNrurgjZz0VkaUtJ32L7wd68awOfO
+            authorization-grant-type: authorization_code
+            scope:
+              - openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8085/realms/custom-realm
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8085/realms/custom-realm
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  cache:
+    redis:
+      time-to-live: 600000
+
+
